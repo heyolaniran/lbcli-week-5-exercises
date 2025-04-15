@@ -5,7 +5,6 @@ TX="020000000121654fa95d5a268abf96427e3292baed6c9f6d16ed9e80511070f954883864b100
 
 REEDEM_SCRIPT=$(bitcoin-cli -regtest decoderawtransaction $TX | jq -r '.vin[0].scriptSig.asm | split(" ")| .[-1]' )
 
-echo $REEDEM_SCRIPT
 
 # STEP 2 : Get the address of the P2SH script wrapping the witness redeem script
 

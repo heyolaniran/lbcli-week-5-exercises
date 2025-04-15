@@ -11,6 +11,10 @@ hex=$(printf '%08x\n' 1495584032 | sed 's/^\(00\)*//');
 LEHEX=$(echo $hex | tac -rs .. | echo "$(tr -d '\n')");
 
 
+SIZE=$(echo -n $LEHEX | wc -c | awk '{print $1/2}')
+
+echo "size : $SIZE"
+
 # calculate the public key hash
 # - Convert to binary | sha256 | ripemd160
 
@@ -18,6 +22,6 @@ PUBKEY_HASH=$(echo $publicKey | xxd -r -p | openssl sha256 -binary | openssl rmd
 
 #  OP_PUSHDATA 4bytes <TIMESTAMP> OP_CHECKLOCKTIMEVERIFY OP_DROP OP_DUP OP_HASH160 OP_PUSHDATA 20 BYTES <PUBLIC_KEYHASH> OP_EQUALVERIFY OP_CHECKSIG
 
-SERIALIZED_SCRIPT="04"$LEHEX"b17576a914"$PUBKEY_HASH"88ac"
+SERIALIZED_SCRIPT="0$SIZE"$LEHEX"b17576a914"$PUBKEY_HASH"88ac"
 
 echo $SERIALIZED_SCRIPT

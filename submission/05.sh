@@ -19,7 +19,6 @@ PUBKEY_HASH=$(echo $publicKey | xxd -r -p | openssl sha256 -binary | openssl rmd
 
 
 
-echo  " SIZE : "$SIZE
 #  OP_PUSHDATA <BLOCKHEIGHT_LE_LENGTH> <BLOCKHEIGHT> OP_CHECKSEQUENCEVERIFY  OP_DROP - Relative timelock script  
 #   OP_DUP OP_HASH160 OP_PUSHDATA 20bytes <PUBKEY_HASH> OP_EQUALVERIFY OP_CHECKSIG - P2PKH script 
 

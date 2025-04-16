@@ -13,7 +13,7 @@ LEHEX=$(echo $hex | tac -rs .. | echo "$(tr -d '\n')");
 
 SIZE=$(echo -n $LEHEX | wc -c | awk '{print $1/2}')
 
-echo "size : $SIZE"
+
 
 # calculate the public key hash
 # - Convert to binary | sha256 | ripemd160
